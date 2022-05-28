@@ -1,9 +1,9 @@
-let num = 266219;
-let str = String(num);
+const num = 266219;
+const str = String(num);
 
 let sum = 1;
 
-for (let digit of str) {
+for (const digit of str) {
     sum *= +digit;
 }
 
