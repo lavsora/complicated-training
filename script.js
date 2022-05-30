@@ -1,37 +1,39 @@
-let lang = prompt('Какой язык хотите выбрать? Введите обозначения "ru" или "en"', 'ru/en');
+'use strict';
 
-if (lang == 'ru') {
-    console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
-} else if (lang == 'en') {
-    console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+const lang = prompt('Какой язык хотите выбрать? Введите обозначения "ru" или "en"', 'ru/en');
+const namePerson = prompt('Введите имя!');
+
+const ruWeek = 'Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье';
+const enWeek = 'Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday';
+
+const ruWeekArray = ruWeek.split(', ');
+const enWeekArray = enWeek.split(', ');
+
+const bigArray = [[ruWeekArray], [enWeekArray]];
+
+if (lang === 'ru') {
+    console.log(ruWeek);
+} else if (lang === 'en') {
+    console.log(enWeek);
 } else {
     console.log('Введите корректные данные');
 }
 
 switch(true) {
-    case lang == 'ru':
-        console.log('Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье');
+    case lang === 'ru':
+        console.log(ruWeek);
         break;
-    case lang == 'en':
-        console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+    case lang === 'en':
+        console.log(enWeek);
         break;
     default:
         console.log('Введите корректные данные');
 }
 
-let arrayLangs = [
-    ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
-    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-];
-
-lang == 'ru' ? console.log(arrayLangs[0]) : 
-    (lang == 'en') ? console.log(arrayLangs[1]) :
+lang === 'ru' ? console.log(bigArray[0]) : 
+    (lang === 'en') ? console.log(bigArray[1]) :
     console.log('Введите корректные данные');
 
-    
-
-let namePerson = prompt('Введите имя!');
-
-namePerson == 'Артем' ? console.log('Директор') :
-    (namePerson == 'Александр') ? console.log('Преподаватель') :
+namePerson === 'Артем' ? console.log('Директор') :
+    (namePerson === 'Александр') ? console.log('Преподаватель') :
     console.log('Студент');
