@@ -5,11 +5,12 @@ const month = ['января', 'февраля', 'марта', 'апреля', '
 const outFirst = document.getElementById('outFirst');
 const outSecond = document.getElementById('outSecond');
 
-let hour = '';
-
 const clockFormatFirst = function() {
-    let date = new Date();
+    const arrHour = ['час', 'часа', 'часов'];
+    const arrMinute = ['минута', 'минуты', 'минут'];
+    const arrSecond = ['секунда', 'секунды', 'секунд'];
 
+    let date = new Date();
     let Y = date.getFullYear();
     let D = date.getDate();
     let M = month[date.getMonth()];
@@ -18,24 +19,12 @@ const clockFormatFirst = function() {
     let m = date.getMinutes();
     let s = date.getSeconds();
 
-    const changeEndHour = function() {
-        switch(true){
-            case h === 1:
-            case h === 21:
-                hour = 'час';
-            break;
-            case h >= 22:
-            case h <= 4:
-                hour = 'часа';
-            break;
-            case h <= 20:
-                hour = 'часов';
-            break;
-        }
+    const declinationWord = function(date, words) {
+        const cases = [2, 0, 1, 1, 1, 2];  
+        return words[ (date % 100 > 4 && date % 100 < 20) ? 2 : cases[(date % 10 < 5) ? date % 10 : 5] ];
     }
-    changeEndHour()
 
-    outFirst.innerHTML = `Сегодня ${d}, ${D} ${M} ${Y} года, ${h} ${hour} ${m} минут ${s} секунды`;
+    outFirst.innerHTML = `Сегодня ${d}, ${D} ${M} ${Y} года, ${h} ${declinationWord(h, arrHour)} ${m} ${declinationWord(m, arrMinute)} ${s} ${declinationWord(s, arrSecond)}`;
 }
 
 const clockFormatSecond = function() {
