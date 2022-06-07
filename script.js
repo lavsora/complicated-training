@@ -42,13 +42,17 @@ const clockFormatSecond = function() {
     let date = new Date();
 
     let Y = date.getFullYear();
-    let D = (date.getDate() < 10) ? '0' + date.getDate() : date.getDate();
-    let M = (date.getMonth() < 10) ? '0' + date.getMonth() : date.getMonth();
-    let h = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
-    let m = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
-    let s = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
+    let D = date.getDate();
+    let M = date.getMonth();
+    let h = date.getHours();
+    let m = date.getMinutes();
+    let s = date.getSeconds();
 
-    outSecond.innerHTML = `${D}.${M}.${Y} - ${h}:${m}:${s}`;
+    const addZero = function (date) {
+       return String(date).padStart(2, '0');
+    }
+
+    outSecond.innerHTML = `${addZero(D)}.${addZero(M)}.${Y} - ${addZero(h)}:${addZero(m)}:${addZero(s)}`;
 }
 
 setInterval(clockFormatFirst, 1000)
