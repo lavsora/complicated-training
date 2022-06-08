@@ -40,7 +40,7 @@ const clockFormatSecond = function() {
     const m = date.getMinutes();
     const s = date.getSeconds();
 
-    outSecond.innerHTML = `${addZero(D)}.${addZero(M)}.${Y} - ${addZero(h)}:${addZero(m)}:${addZero(s)}`;
+    outSecond.innerHTML = `${addZero(D)}.${addZero(M + 1)}.${Y} - ${addZero(h)}:${addZero(m)}:${addZero(s)}`;
 }
 
 setInterval(clockFormatFirst, 1000)
