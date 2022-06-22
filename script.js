@@ -1,7 +1,9 @@
 'use strict'
 
 const input = document.querySelector('input');
-let p = document.querySelector('p');
+const p = document.querySelector('p');
+
+let valueWriteDebounce;
 
 const debounce = (fn, ms) => {
     let timeOut;
@@ -19,7 +21,7 @@ const valueWrite = () => {
     p.textContent = input.value
 }
 
-let valueWriteDebounce = debounce(valueWrite, 300)
+valueWriteDebounce = debounce(valueWrite, 300)
 
 input.addEventListener('keyup', valueWriteDebounce)
 
